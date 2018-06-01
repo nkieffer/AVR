@@ -1,0 +1,42 @@
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stdbool.h>
+#include <avr/interrupt.h>
+
+volatile uint8_t brightness = 0;
+volatile int8_t dir = 1;
+
+ISR(TIMER1_COMPA_vect){
+  brightness += dir;
+  //  OCR1B = (F_CPU/((1<<TCCR1) * 4)) - 1;
+ 
+}
+
+void init_timer_comp(void){
+  TCCR1 |= _BV(CTC1);
+  TCCR1 |= 5;
+  TIMSK |= _BV(OCIE1A);
+  OCR1A = (F_CPU/((1<<(TCCR1-1)) * (.25/255.0)))-1;// (0.1/255.0))) - 1;
+}
+
+int main(void){
+  uint8_t duty;
+  DDRB |= _BV(PB0);
+  // TCCR0B |= _BV(WGM02);
+  TCCR0B |= _BV(CS01) | _BV(CS00);
+  TCCR0A |= _BV(WGM00) | _BV(COM0A1);// | _BV(COM0A0);
+  init_timer_comp();
+  sei();
+  OCR0A = brightness;
+  while(true){
+    cli();
+    OCR0A = brightness;
+    if (brightness >= 255){
+      dir = -1;
+    }else if(brightness <= 0){
+      dir = 1;
+    }
+    sei();
+  }
+} 
+
