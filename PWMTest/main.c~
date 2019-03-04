@@ -26,7 +26,7 @@ int main(void){
   DDRB |= _BV(PB0) | _BV(PB1) | _BV(PB4) | _BV(PB2);
   PORTB |=_BV(PB2);
   MCUCR |= _BV(ISC01) | _BV(ISC00);
-  // GIMSK |= _BV(INT0);
+  //  GIMSK |= _BV(INT0);
   OCR1C = 132; 
   setupPWM();
   sei();
@@ -41,7 +41,7 @@ int main(void){
 	  OCR0A = 0;
 	  OCR0B = 0;
 	  OCR1B = 0;
-	  //	  _delay_ms(1);
+	  	  _delay_ms(1);
 	  USICR |= _BV(USITC);
 	  OCR0A = b;
 	  OCR0B = r;
@@ -50,7 +50,7 @@ int main(void){
 	  OCR0A = 0;
 	  OCR0B = 0;
 	  OCR1B = 0;
-	  //	  _delay_ms(1);
+	  	  _delay_ms(1);
 	  USICR |= _BV(USITC);
 	}
       }

@@ -13,6 +13,15 @@ ISR(ADC_vect){
   analog = ((ADCH << 8) | ADCL);
 }
 
+void loop(void){
+  while(1){
+    freq = analog / 1023.0 * 0.2612;
+    tct = (16000000/ (1 << ((TCCR1 & 15) - 1)) * freq);
+    OCR1C = tct;
+    OCR1A = tct;
+  }
+}
+
 int main(void){
   DDRB |=_BV(PB4);
   DDRB &= ~_BV(PB3);
@@ -36,11 +45,6 @@ int main(void){
   sei();
 
   ADCSRA |= _BV(ADSC);
-
-  while(1){
-    freq = analog / 1023.0 * 0.2612;
-    tct = (16000000/ (1 << ((TCCR1 & 15) - 1)) * freq);
-    OCR1C = tct;
-    OCR1A = tct;
-  }
+  loop();
 }
+

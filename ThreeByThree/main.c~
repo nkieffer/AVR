@@ -1,0 +1,6 @@
+#include <avr/interrupts.h>
+
+int main(void){
+  DDBD |= _BV(PB0) | _BV(PB1) |_BV(PB2) | _BV(PB3) | _BV(PB4);
+  PORTB = 0xFF;
+}

@@ -1,0 +1,22 @@
+0) create <libraryname>.c and <libraryname>.h
+
+1) make object
+   avr-gcc -Wall -I ~/AVR/headers -c <libraryname>.c -o <libraryname>.o -mmcu=<device> -DF_CPU=<cpu speed>
+
+2) make library
+   avr-ar rcs lib<libraryname>.a <libraryname>.o
+
+3) Write source <name>.c 
+   #include <<libraryname>.h>
+
+4) Compile
+   avr-gcc -Wall -Os -DF_CPU=<cpu speed> -mmcu=<device> -I/Users/nathan/AVR/headers -L/Users/nathan/AVR/headers -c <name>.c -o <name>.o
+
+5) Link
+   avr-gcc -Wall -Os -DF_CPU=9600000 -mmcu=attiny13 -l<libraryname> -L/Users/nathan/AVR/headers -I/Users/nathan/AVR/headers -o <name>.elf <name>.o
+
+6) Create hex
+   avr-objcopy -j .text -j .data -O ihex <name>.elf <name>.hex
+
+7) Load
+   avrdude -c arduino -P /dev/cu.usb* -b 19200 -p attiny13 -U flash:w:<name>.hex:i
