@@ -1,0 +1,8 @@
+/*
+        _____          +----+
+(PCINT5/RESET/ADC0)PB5-|    |- VCC
+      (PCINT3/ADC3)PB3-| AT |-PB2(SCK/ADC1/T0/PCINT2)
+      (PCINT4/ADC2)PB4-| 13 |-PB1(MISO/AIN1/OC0B/INT0/PCINT1)
+                   GND-|    |-PB0(MOSI/AIN0/OC0A/PCINT0)
+                       +----+
+ */

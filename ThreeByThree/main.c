@@ -50,7 +50,7 @@ int main(void){
   leds[6].ddrb = 0xf4;
   leds[6].portb = 0x04;
   while(1){
-    turnOn(leds[6]);
+    turnOn(leds[5]);
     /* lightPattern(*pattern, leds); */
     /* if(ct >= 0x0900){ */
     /*   pattern = pattern <= patterns + 8 ? pattern + 1 : patterns; */

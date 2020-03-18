@@ -1,0 +1,11 @@
+/*
+                                  +----+
+                              VCC-|    |-GND
+                      (PCINT8)PB0-|    |-PA0(ADC0/PCINT0)
+                      (PCINT9)PB1-| AT |-PA1(ADC1/AIN0/AIN1/PCINT1)
+               (PCINT11/RESET)PB3-| 84 |-PA2(ADC2/AINT1/PCINT2)
+           (PCINT10/INT0/OC0A)PB2-|    |-PA3(ADC3/T0/PCINT3)
+        (PCINT7/ICP/OC0B/ADC7)PA7-|    |-PA4(ADC4/USCK/SCL/T1/PCINT4)
+(PCINT6/OC1A/SDA/MOSI/DI/ADC5)PA6-|    |-PA5(ADC5/DO/MISO/AC1B/PCINT5)
+                                  +----+
+ */
