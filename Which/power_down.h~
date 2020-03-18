@@ -1,8 +1,0 @@
-#ifndef POWER_DOWN_H_
-#define POWER_DOWN_H_
-
-void power_down();
-
-void check_power_down();
-
-#endif
